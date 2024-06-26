@@ -8,6 +8,10 @@ import reportWebVitals from './reportWebVitals';
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
+function getEnvironment() {
+  return process.env.environment || 'dev';
+}
+
 Sentry.init({
   dsn: "https://1ac0a2b6ddf44c4eb335e506dde7a843@o87286.ingest.sentry.io/4504878909620224",
   integrations: [
@@ -18,6 +22,7 @@ Sentry.init({
       blockAllMedia: true,
     }),
   ],
+  environment: getEnvironment(),
   tracesSampleRate: 1.0,
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
