@@ -8,8 +8,8 @@ Slackpaste seeks to address these issues by stripping out unnecessary images and
 
 ## Usage:
 
-1. Copy an entire slack thread to the clipboard
-2. Paste it into the Slackpaste window
+1. Copy an entire slack thread to the clipboard.
+2. Paste it into the Slackpaste window.
 3. Copy the formatted output, either via the Copy Button or manually.
 4. Paste into Notion or wherever else.
 
