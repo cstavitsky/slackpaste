@@ -45,3 +45,77 @@
 .App ul {
   text-align: left;
 }
+
+/* Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --secondary-bg: #f5f5f5;
+  --border-color: #ddd;
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --secondary-bg: #2d2d2d;
+  --border-color: #444;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  background-color: var(--bg-color);
+}
+
+.col1, .col2 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+textarea, .output {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.option {
+  color: var(--text-color);
+}
+
+.header {
+  color: var(--text-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}

@@ -3,6 +3,8 @@ import './App.css';
 import { processDoc } from './processDoc';
 import { copyToClipboard } from './copyToClipboard';
 import { PopupProvider } from './popupContext';
+import { ThemeProvider } from './themeContext';
+import ThemeToggle from './ThemeToggle';
 import Popup from './popup';
 import DeleteButton from './DeleteButton';
 import { usePopup } from './popupContext';
@@ -107,43 +109,46 @@ function App() {
   }, [anonymize, includeChannelId, csvExportFriendly]);
 
   return (
-    <PopupProvider>
-      <div className="App container">
-        <div className="col1">
-          <h2 className="header">Paste Slack Thread:</h2>
-          <Checkbox label="Anonymize" initialValue={anonymize} onChangeCallback={setAnonymize} />
-          <Checkbox label="Include channel ID" initialValue={includeChannelId} onChangeCallback={setIncludeChannelId} />
-          <Checkbox
-            label="CSV export-friendly (link text, code blocks)"
-            initialValue={csvExportFriendly}
-            onChangeCallback={setCsvExportFriendly}
-          />
-          <textarea
-            autoFocus
-            placeholder="paste slack thread here"
-            rows="5"
-            cols="80"
-            onPaste={handlePaste}
-            type="text"
-            id={SLACK_INPUT}
-            autoComplete="no"
-          ></textarea>
-          <DeleteButton
-            onClick={() => {
-              document.getElementById(SLACK_INPUT).value = '';
-              setOriginalDoc(null);
-            }}
-          />
-          <CopyButton pasted={pasted} disabled={disabled} />
-          <Popup />
-        </div>
-        <div className="col2">
-          <div className="output">
-            <div id="formatted-output" dangerouslySetInnerHTML={{ __html: pasted }}></div>
+    <ThemeProvider>
+      <PopupProvider>
+        <div className="App container">
+          <ThemeToggle />
+          <div className="col1">
+            <h2 className="header">Paste Slack Thread:</h2>
+            <Checkbox label="Anonymize" initialValue={anonymize} onChangeCallback={setAnonymize} />
+            <Checkbox label="Include channel ID" initialValue={includeChannelId} onChangeCallback={setIncludeChannelId} />
+            <Checkbox
+              label="CSV export-friendly (link text, code blocks)"
+              initialValue={csvExportFriendly}
+              onChangeCallback={setCsvExportFriendly}
+            />
+            <textarea
+              autoFocus
+              placeholder="paste slack thread here"
+              rows="5"
+              cols="80"
+              onPaste={handlePaste}
+              type="text"
+              id={SLACK_INPUT}
+              autoComplete="no"
+            ></textarea>
+            <DeleteButton
+              onClick={() => {
+                document.getElementById(SLACK_INPUT).value = '';
+                setOriginalDoc(null);
+              }}
+            />
+            <CopyButton pasted={pasted} disabled={disabled} />
+            <Popup />
+          </div>
+          <div className="col2">
+            <div className="output">
+              <div id="formatted-output" dangerouslySetInnerHTML={{ __html: pasted }}></div>
+            </div>
           </div>
         </div>
-      </div>
-    </PopupProvider>
+      </PopupProvider>
+    </ThemeProvider>
   );
 }
 
