@@ -52,6 +52,7 @@
   --text-color: #000000;
   --secondary-bg: #f5f5f5;
   --border-color: #ddd;
+  --col2-bg: #f0f0f0;
 }
 
 body.dark-mode {
@@ -59,6 +60,7 @@ body.dark-mode {
   --text-color: #ffffff;
   --secondary-bg: #2d2d2d;
   --border-color: #444;
+  --col2-bg: #1a1a1a;
 }
 
 /* Apply theme variables */
@@ -75,17 +77,43 @@ body {
 
 .container {
   background-color: var(--bg-color);
+  display: flex;
+  min-height: 100vh;
 }
 
 .col1, .col2 {
+  padding: 20px;
+  flex: 1;
+}
+
+.col1 {
   background-color: var(--bg-color);
   color: var(--text-color);
 }
 
-textarea, .output {
+.col2 {
+  background-color: var(--col2-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.output {
+  background-color: var(--col2-bg);
+  color: var(--text-color);
+  border: none;
+  height: 100%;
+}
+
+textarea {
   background-color: var(--secondary-bg);
   color: var(--text-color);
   border: 1px solid var(--border-color);
+}
+
+textarea:focus {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  outline-color: var(--border-color);
 }
 
 button {
